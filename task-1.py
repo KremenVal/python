@@ -2,8 +2,8 @@ num_int = 1
 num_float = 1.1
 text_str = 'Hello World'
 is_true = True
-num_user_1 = int(input('Please, enter the number - '))
-num_user_2 = int(input('Please, enter the number - '))
+num_user_1 = int(input('Please, enter a number - '))
+num_user_2 = int(input('Please, enter a number - '))
 text_1 = input('Please, enter any text - ')
 text_2 = input('Please, enter any text - ')
 
