@@ -1,0 +1,10 @@
+user_time = int(input('Please, enter random time in seconds (example is 360) - '))
+
+if user_time < 0:
+    print('Time can\'t be negative.')
+else:
+    hours = str(user_time // 3600)
+    minutes = str((user_time - int(hours) * 3600) // 60)
+    seconds = str(user_time - (int(hours) * 3600) - (int(minutes) * 60))
+    print("{}:{}:{}".format(hours if len(hours) > 1 else '0' + hours, minutes if len(minutes) > 1 else '0' + minutes,
+                            seconds if len(seconds) > 1 else '0' + seconds))
