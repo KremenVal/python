@@ -1,7 +1,7 @@
 user_time = int(input('Введите любое число в секундах (например, 360) - '))
 
 if user_time < 0:
-    print('Время не может быть негативным.')
+    print('Время не может быть отрецательным.')
 else:
     hours = str(user_time // 3600)
     minutes = str((user_time - int(hours) * 3600) // 60)
