@@ -1,4 +1,4 @@
-proceeds, costs = int(input('Введите выручку фирмы - ')), int(input('Введите издержки фирмы - '))
+proceeds, costs = float(input('Введите выручку фирмы - ')), float(input('Введите издержки фирмы - '))
 income = proceeds - costs
 
 print("Финансовый результат фирмы - {}.".format('прибыль' if income > 0 else 'убыток'))
@@ -6,7 +6,7 @@ print("Финансовый результат фирмы - {}.".format('при�
 if income > 0:
     profitability_of_proceeds = (income / proceeds) * 100
 
-    print("Рентабельность выручки - {}%.".format(profitability_of_proceeds))
+    print("Рентабельность выручки - {}%.".format(round(profitability_of_proceeds, 3)))
 
     number_of_employees = int(input('Введите численность сотрудников фирмы - '))
 
