@@ -1,27 +1,33 @@
-rating, my_list = int(input('Введите число для рейтинга - ')), [7, 5, 3, 3, 2]
-list_1 = my_list[0:len(my_list) // 2]
-list_2 = my_list[len(my_list) // 2:]
+my_list = [i for i in range(100, -5, -5)]
+print("Старый список рейтига - {}".format(my_list))
+rating, right_list, final_list = int(input('Введите число для рейтинга - ')), [], []
 
 if rating > max(my_list):
     my_list.insert(0, rating)
 elif rating < min(my_list):
     my_list.insert(len(my_list), rating)
+elif my_list.count(rating) > 0:
+    my_list.insert(my_list.index(rating) + my_list.count(rating), rating)
 else:
-    list_range_1 = [i for i in range(list_1[0], list_1[-1] - 1, -1)]
-    list_range_2 = [i for i in range(list_2[0], list_2[-1] - 1, -1)]
+    while True:
+        list_1 = my_list[0:len(my_list) // 2]
+        list_2 = my_list[len(my_list) // 2:]
 
-    if rating not in list_range_1 and rating not in list_range_2:
-        list_2.insert(0, rating)
-    else:
-        if rating in list_range_1:
-            link_list = list_1
+        if list_1[-1] > rating > list_2[0]:
+            list_2.insert(0, rating)
+            final_list += list_1 + list_2 + right_list
+            break
         else:
-            link_list = list_2
-        for j in range(0, len(link_list) - 1):
-            if link_list[j] >= rating >= link_list[j + 1]:
-                link_list.insert(j + 1, rating)
-                break
+            if list_1[0] >= rating >= list_1[-1]:
+                if len(list_1) == 2:
+                    list_1.insert(1, rating)
+                    final_list += list_1 + list_2 + right_list
+                    break
+                my_list = list_1
+                right_list = list_2 + right_list
+            else:
+                final_list += list_1
+                my_list = list_2
+    my_list = final_list
 
-    my_list = list_1 + list_2
-
-print(my_list)
+print("Обновлённый список рейтига - {}".format(my_list))
