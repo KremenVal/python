@@ -31,3 +31,9 @@ else:
     my_list = final_list
 
 print("Обновлённый список рейтига - {}".format(my_list))
+
+# Либо испольщовать сортировку как второй вариан решения, в первом я попытался свой алгоритм сделать
+# my_list = [i for i in range(100, -5, -5)]
+# my_list.append(int(input('Введите число для рейтинга - ')))
+# print("Обновлённый список рейтига - {}".format(my_list.sort(reverse=True)))
+
