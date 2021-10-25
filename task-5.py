@@ -2,7 +2,7 @@ my_list = [i for i in range(100, -5, -5)]
 print("Старый список рейтига - {}".format(my_list))
 rating, right_list, final_list = input('Введите натуральное число для рейтинга - '), [], []
 
-if not rating.isdecimal():
+if not rating.isdecimal() or int(rating) == 0:
     print('Вы ввели не нартуральное число')
 else:
     rating = int(rating)
