@@ -17,6 +17,12 @@ def my_func(x, y):
 #     return 1 / result
 
 
+# Третий вариант
+# def my_func(x, y):
+#     return 1 / x**abs(y)
+
+
+
 nums = {'x': 0, 'y': 0}
 
 for key, value in nums.items():
