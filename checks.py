@@ -34,7 +34,7 @@ def check_for_float(string: str) -> bool:
 
 
 def check_for_num(string: str) -> bool:
-    if len(string) < 1 or (len(string) == 1 and not string.isdecimal()) or string.count('.') > 1 or\
+    if len(string) < 1 or (len(string) == 1 and not string.isdecimal()) or string.count('.') > 1 or \
             string[0] == '.' or string[-1] == '.' or (string[0] == '-' and string[1] == '.'):
         return False
 
