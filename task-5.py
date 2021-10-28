@@ -1,44 +1,18 @@
-my_list = [i for i in range(100, -5, -5)]
-print("Старый список рейтига - {}".format(my_list))
-rating, right_list, final_list = input('Введите натуральное число для рейтинга - '), [], []
+from checks import is_num, is_int
 
-if not rating.isdecimal() or int(rating) == 0:
-    print('Вы ввели не нартуральное число')
-else:
-    rating = int(rating)
 
-    if rating > max(my_list):
-        my_list.insert(0, rating)
-    elif rating < min(my_list):
-        my_list.insert(len(my_list), rating)
-    elif my_list.count(rating) > 0:
-        my_list.insert(my_list.index(rating) + my_list.count(rating), rating)
+result = 0
+
+while True:
+    nums = input('Строку чисел, разделенных пробелом или стоп символ s для окончания работы программы - ')
+
+    if nums.lower() == 's':
+        break
     else:
-        while True:
-            list_1 = my_list[0:len(my_list) // 2]
-            list_2 = my_list[len(my_list) // 2:]
+        nums = nums.split(' ')
 
-            if list_1[-1] > rating > list_2[0]:
-                list_2.insert(0, rating)
-                final_list += list_1 + list_2 + right_list
-                break
-            else:
-                if list_1[0] >= rating >= list_1[-1]:
-                    if len(list_1) == 2:
-                        list_1.insert(1, rating)
-                        final_list += list_1 + list_2 + right_list
-                        break
-                    my_list = list_1
-                    right_list = list_2 + right_list
-                else:
-                    final_list += list_1
-                    my_list = list_2
-        my_list = final_list
+        for i in nums:
+            if is_num(i):
+                result += int(i) if is_int(i) else float(i)
 
-    print("Обновлённый список рейтига - {}".format(my_list))
-
-# Либо испольщовать сортировку как второй вариан решения, в первом я попытался свой алгоритм сделать
-# my_list = [i for i in range(100, -5, -5)]
-# my_list.append(int(input('Введите число для рейтинга - ')))
-# print("Обновлённый список рейтига - {}".format(my_list.sort(reverse=True)))
-
+print(result)
