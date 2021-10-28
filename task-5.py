@@ -15,4 +15,6 @@ while True:
             if is_num(i):
                 result += int(i) if is_int(i) else float(i)
 
+        print(result)
+
 print(result)
