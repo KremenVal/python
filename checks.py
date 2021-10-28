@@ -1,4 +1,4 @@
-def check_for_int(string: str, nat: int = 0) -> bool:
+def is_int(string: str, nat: int = 0) -> bool:
     if len(string) < 1 or (len(string) == 1 and not string.isdecimal()) or string.count('.') > 0:
         return False
 
@@ -15,7 +15,7 @@ def check_for_int(string: str, nat: int = 0) -> bool:
     return True
 
 
-def check_for_float(string: str) -> bool:
+def is_float(string: str) -> bool:
     if len(string) < 3 or string.count('.') > 1 or string.count('.') == 0 or string[0] == '.' or string[-1] == '.' or \
             (string[0] == '-' and string[1] == '.'):
         return False
@@ -33,7 +33,7 @@ def check_for_float(string: str) -> bool:
     return True
 
 
-def check_for_num(string: str) -> bool:
+def is_num(string: str) -> bool:
     if len(string) < 1 or (len(string) == 1 and not string.isdecimal()) or string.count('.') > 1 or \
             string[0] == '.' or string[-1] == '.' or (string[0] == '-' and string[1] == '.'):
         return False
