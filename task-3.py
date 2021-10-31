@@ -1,3 +1,1 @@
-num = int(input('Введите число - '))
-abs_num = abs(num)
-print(abs_num + int(str(abs_num) * 2) + int(str(abs_num) * 3))
+print([i for i in range(20, 241) if i % 20 == 0 or i % 21 == 0])
