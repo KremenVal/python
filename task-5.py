@@ -1,18 +1,4 @@
-proceeds, costs = float(input('Введите выручку фирмы - ')), float(input('Введите издержки фирмы - '))
-income = proceeds - costs
+from functools import reduce
 
-print("Финансовый результат фирмы - {}.".format('прибыль' if income > 0 else 'убыток'))
 
-if income > 0:
-    profitability_of_proceeds = (income / proceeds) * 100
-
-    print("Рентабельность выручки - {}%.".format(round(profitability_of_proceeds, 3)))
-
-    number_of_employees = int(input('Введите численность сотрудников фирмы - '))
-
-    if number_of_employees < 1:
-        print('На фирме не может работать 0 или меньше сотрудников.')
-    else:
-        profit_per_employees = income / number_of_employees
-
-        print("Прибыль фирмы в расчёте на одного сотрудника - {}.".format(profit_per_employees))
+print(reduce(lambda a, b: a * b, [i for i in range(100, 1001) if i % 2 == 0]))
