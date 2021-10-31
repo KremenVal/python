@@ -1,10 +1,4 @@
-num, result, div_num = abs(int(input('Введите число - '))), 0, 0
+import random
 
-while num > 1:
-    div_num = num % 10
-    num //= 10
-
-    if div_num > result:
-        result = div_num
-
-print(result)
+my_list = [random.randrange(0, 1000) for _ in range(0, 10)]
+print([i for i in my_list if my_list.count(i) == 1])
