@@ -1,15 +1,20 @@
-first_day_result = float(input('Введите кол-во км, которое пробежал спортсмен в 1-й день - '))
-last_day_result = float(input('Введите кол-во км, которое пробежал спортсмен в последний день - '))
+from itertools import count, cycle
+from random import randrange
 
-if first_day_result < 0:
-    print('Количество км, которое пробежал спортсмен в 1-й день не может быть отрецательным.')
-elif last_day_result < 0:
-    print('Количество км, которое пробежал спортсмен в последний день не может быть отрецательным.')
-else:
-    number_of_day = 1
 
-    while first_day_result < last_day_result:
-        first_day_result += round(first_day_result * 0.1, 2)
-        number_of_day += 1
+num_start = randrange(0, 100)
+num_end = randrange(100, 150)
 
-    print("На {}-й день спортсмен достиг результата - не менее {} км.".format(number_of_day, last_day_result))
+for i in count(num_start):
+	print(i)
+
+	if num_end == i:
+		break
+
+my_list = [randrange(0, 100) for _ in range(0, 10)]
+iter_list = cycle(my_list)
+end_cycle = randrange(10, 50)
+
+while end_cycle > 0:
+	print(next(iter_list))
+	end_cycle -= 1
