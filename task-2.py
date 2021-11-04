@@ -1,4 +1,11 @@
-import random
+count_lines = 1
 
-my_list = [random.randrange(0, 1000) for _ in range(0, 10)]
-print([my_list[i + 1] for i in range(0, len(my_list) - 1) if my_list[i + 1] > my_list[i]])
+with open('task-2.txt', 'r', encoding='utf8') as file:
+	while True:
+		line = file.readline()
+
+		if not line:
+			break
+
+		print("{}. {}\nКоличество слов в строке - {}.".format(count_lines, line.strip('\n'), line.count(' ') + 1))
+		count_lines += 1
