@@ -7,5 +7,5 @@ with open('task-2.txt', 'r', encoding='utf8') as file:
 		if not line:
 			break
 
-		print("{}. {}\nКоличество слов в строке - {}.".format(count_lines, line.strip('\n'), line.count(' ') + 1))
+		print("{}. {}\nКоличество слов в строке - {}.".format(count_lines, line.strip('\n'), len(line.split())))
 		count_lines += 1
