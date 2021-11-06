@@ -1,8 +1,21 @@
-text_user = None
+from time import sleep
 
-with open('task-1.txt', 'w') as file:
-	while text_user != '':
-		text_user = input('Введите текст - ')
 
-		if text_user != '':
-			file.write(text_user + '\n')
+class TrafficLight:
+	__color = ['красный', 'жёлтый', 'зелёный']
+
+	def running(self):
+		my_dict = {'красный': 7, 'жёлтый': 2, 'зелёный': 5}
+		keys = list(my_dict.keys())
+
+		if self.__color[0] != keys[0] or self.__color[1] != keys[1] or self.__color[2] != keys[2]:
+			print('Неправильный порядок режимов.')
+		else:
+			while True:
+				for item in self.__color:
+					print(item)
+					sleep(my_dict[item])
+
+
+trafficLight = TrafficLight()
+trafficLight.running()
