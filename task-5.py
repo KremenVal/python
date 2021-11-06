@@ -1,7 +1,31 @@
-from random import randrange
+class Stationery:
+	title = ''
+
+	def draw(self):
+		print('Запуск отрисовки.')
 
 
-with open('task-5.txt', 'w+') as file:
-	file.write(' '.join([str(randrange(0, 1000)) for _ in range(0, 1000)]))
-	file.seek(0)
-	print(sum(map(lambda element: int(element), file.readline().split())))
+class Pen(Stationery):
+	def draw(self):
+		Stationery.draw(self)
+		print('Ручку нельзя стереть.')
+
+
+class Pencil(Stationery):
+	def draw(self):
+		Stationery.draw(self)
+		print('Карандаш можно стереть.')
+
+
+class Handle(Stationery):
+	def draw(self):
+		Stationery.draw(self)
+		print('И эту ручку нельзя стереть.')
+
+
+my_pen = Pen()
+my_pencil = Pencil()
+my_handle = Handle()
+my_pen.draw()
+my_pencil.draw()
+my_handle.draw()
