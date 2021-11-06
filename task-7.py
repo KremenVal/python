@@ -1,19 +1,10 @@
-from random import randrange
+import json
 
 
-def fact(number):
-	result = 1
+with open('task-7.txt', 'r', encoding='utf-8') as file:
+    firms = {f"{line.split()[0]}": float(line.split()[2]) - float(line.split()[3]) for line in file}
+    average = {'average_profit': sum([profit for firm, profit in firms.items() if profit > 0]) /
+               len([profit for firm, profit in firms.items() if profit > 0])}
 
-	if number == 1:
-		yield "{}! = {}".format(number, number)
-	else:
-		for i in range(1, number + 1):
-			result *= i
-
-			yield "{}! = {}".format(i, result)
-
-
-num = randrange(0, 50)
-
-for el in fact(num):
-	print(el)
+with open('task-7.json', 'w', encoding='utf-8') as file:
+    file.write(json.dumps([firms, average]))
