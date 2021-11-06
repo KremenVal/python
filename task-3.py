@@ -1,16 +1,24 @@
-employees, sum_of_salary = {}, 0
+class Worker:
+	name = ''
+	surname = ''
+	position = ''
+	_income = {}
 
-with open('task-3.txt', 'r', encoding='utf-8') as file:
-	for line in file:
-		key, value = line.split()
+	def __init__(self, name, surname, position, income):
+		self.name = name
+		self.surname = surname
+		self.position = position
+		self._income = income
 
-		if key in employees:
-			employees[key].append(float(value))
-		else:
-			employees[key] = [float(value)]
 
-for employee, salaries in employees.items():
-	[print(f"Сотрудник {employee} имеет оклад {salary}.") for salary in salaries if salary < 20000]
-	sum_of_salary += sum(salaries)
+class Position(Worker):
+	def get_full_name(self):
+		return self.name + ' ' + self.surname
 
-print(f"Средняя величина дохода сотрудников - {sum_of_salary / len(employees)}")
+	def get_total_income(self):
+		return sum(map(lambda item: item, [value for value in self._income.values()]))
+
+
+position_1 = Position('Иван', 'Иванов', 'IT-шник', {'wage': 150000, 'bonus': 10000})
+print(position_1.get_full_name())
+print(position_1.get_total_income())
