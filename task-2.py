@@ -1,7 +1,52 @@
-def output_info(name: str = 'Иван', surname: str = 'Иванов', data: str = '01.01.1987', city: str = 'Матала',
-                email: str = 'example@gmail.com', mobile: str = '0123456789') -> None:
-    print(f"Имя: {name}\nФамилия: {surname}\nГод рождения: {data}\nГород проживания: {city}\nЭлекторнная почта: {email}"
-          f"\nМобильный телефон: {mobile}")
+from abc import abstractmethod
 
 
-output_info('Женя', data='05.09.1996', mobile='9876543210')
+class Clothes:
+    def __init__(self, name):
+        self.name = name
+
+    @abstractmethod
+    def calculating(self):
+        pass
+
+
+class Coat(Clothes):
+    def __init__(self, name, size):
+        Clothes.__init__(self, name)
+        self.size = size
+        self.__all_sizes = None
+
+    def calculating(self):
+        return round(self.size / 6.5 + 0.5, 2)
+
+    @property
+    def all_expense(self):
+        if self.__all_sizes is None:
+            self.__all_sizes = {i: round(i / 6.5 + 0.5, 2) for i in range(50, 201)}
+
+        return self.__all_sizes
+
+
+class Suit(Clothes):
+    def __init__(self, name, height):
+        Clothes.__init__(self, name)
+        self.height = height
+        self.__all_height = None
+
+    def calculating(self):
+        return 2 * self.height + 0.3
+
+    @property
+    def all_expense(self):
+        if self.__all_height is None:
+            self.__all_height = {i: 2 * i + 0.3 for i in range(50, 221)}
+
+        return self.__all_height
+
+
+my_coat = Coat('Coat', 100)
+print(my_coat.calculating())
+print(my_coat.all_expense)
+my_suit = Suit('Suit', 120)
+print(my_suit.calculating())
+print(my_suit.all_expense)
