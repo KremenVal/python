@@ -1,21 +1,19 @@
-from time import sleep
+class Data:
+	def __init__(self, data: str):
+		self.data = data
+
+	@classmethod
+	def transform_data(cls, data):
+		day, month, year = map(int, data.split('-'))
+
+		return {'day': day, 'month': month, 'year': year}
+
+	@staticmethod
+	def is_valid(data: str):
+		day, month, year = map(int, data.split('-'))
+
+		return 1 <= day <= 31 and 1 <= month <= 12 and 1960 <= year
 
 
-class TrafficLight:
-	__color = ['красный', 'жёлтый', 'зелёный']
-
-	def running(self):
-		my_dict = {'красный': 7, 'жёлтый': 2, 'зелёный': 5}
-		keys = list(my_dict.keys())
-
-		if self.__color[0] != keys[0] or self.__color[1] != keys[1] or self.__color[2] != keys[2]:
-			print('Неправильный порядок режимов.')
-		else:
-			while True:
-				for item in self.__color:
-					print(item)
-					sleep(my_dict[item])
-
-
-trafficLight = TrafficLight()
-trafficLight.running()
+print(Data.transform_data('31-12-1960'))
+print(Data.is_valid('31-12-1960'))
