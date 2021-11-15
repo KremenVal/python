@@ -1,24 +1,35 @@
-class Worker:
-	name = ''
-	surname = ''
-	position = ''
-	_income = {}
+class NotNumber(Exception):
+	def __init__(self, *args):
+		if args:
+			self.message = args[0]
+		else:
+			self.message = None
 
-	def __init__(self, name, surname, position, income):
-		self.name = name
-		self.surname = surname
-		self.position = position
-		self._income = income
-
-
-class Position(Worker):
-	def get_full_name(self):
-		return self.name + ' ' + self.surname
-
-	def get_total_income(self):
-		return sum(map(lambda item: item, [value for value in self._income.values()]))
+	def __str__(self):
+		if self.message:
+			return self.message
+		else:
+			return 'Not a Number'
 
 
-position_1 = Position('Иван', 'Иванов', 'IT-шник', {'wage': 150000, 'bonus': 10000})
-print(position_1.get_full_name())
-print(position_1.get_total_income())
+def list_int():
+	result_list = []
+
+	while True:
+		item = input('Введите число или слово "stop" для остановки скрипта: ')
+
+		try:
+			if not item.isdecimal():
+				if item.lower() == 'stop':
+					break
+				else:
+					raise NotNumber('Вы ввели не число')
+			else:
+				result_list.append(int(item))
+		except NotNumber as nn:
+			print(nn)
+
+	return result_list
+
+
+print(list_int())
