@@ -1,16 +1,25 @@
-class Road:
-	_length = 0
-	_width = 0
-	mass_asphalt = 25
-	blade_thickness = 5
+class MyDivisionByZero(Exception):
+	def __init__(self, *args):
+		if args:
+			self.message = args[0]
+		else:
+			self.message = None
 
-	def __init__(self, length, width):
-		self.length = length
-		self.width = width
+	def __str__(self):
+		if self.message:
+			return self.message
+		else:
+			return 'MyDivision By Zero'
 
-	def mass_of_asphalt(self):
-		return self.length * self.width * self.mass_asphalt * self.blade_thickness / 1000
 
+a, b = int(input('Введите число: ')), int(input('Введите число: '))
 
-new_road = Road(20, 5000)
-print(new_road.mass_of_asphalt())
+try:
+	if b == 0:
+		raise MyDivisionByZero('Вы не можете делить на 0!')
+	else:
+		print(a / b)
+# except MyDivisionByZero as m:
+# 	print(m)
+except MyDivisionByZero as m:
+	print(m.message)
